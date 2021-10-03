@@ -8,7 +8,7 @@ public class Main {
         c3.addArc(1,2,"");
         c3.addArc(2,3,""); // Quel est le propblème ici ?
 
-        System.out.print(c3.toString());
+        System.out.print(c3.PPIOrdo(c3, c3.TriTs(c3.Grev("",c3))));
 
     }
 }

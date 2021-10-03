@@ -1,9 +1,10 @@
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class Graph<Label> {
+public class Graph<Label> extends ParcourProfondeurIteree{
 
-    private class Edge {
+    public class Edge {
         public int source;
         public int destination;
         public Label label;
@@ -13,10 +14,13 @@ public class Graph<Label> {
             this.destination = to;
             this.label = label;
         }
+        public int getSource(){return source;};
+        public int getDestination(){return destination;};
+        public Label getLabel(){return label;};
     }
 
     private int cardinal;
-    private ArrayList<LinkedList<Edge>> incidency;
+    public ArrayList<LinkedList<Edge>> incidency;
 
 
     public Graph(int size) {
@@ -33,6 +37,26 @@ public class Graph<Label> {
 
     public void addArc(int source, int dest, Label label) {
         incidency.get(source).addLast(new Edge(source,dest,label));
+    }
+
+    public ArrayList<Edge> arcsortant(int sommets){
+        ArrayList<Edge> arcsortant = new ArrayList<>();
+        for (int i=0; i<= incidency.get(sommets).size()-1; i++){
+            arcsortant.add(incidency.get(sommets).get(i));
+        }
+        return arcsortant;
+    }
+
+    public Graph<String> Grev(Label label,Graph<String> G){
+        for (int i=0; i<= G.incidency.size()-1; i++){
+            for (int j=0; j<= G.incidency.get(i).size()-1; j++){
+                int source = G.incidency.get(i).get(j).getSource();
+                int destination = G.incidency.get(i).get(j).getDestination();
+                Graph<String>.Edge E = new Graph<String>.Edge(destination,source,"");
+                G.incidency.get(i).set(j,E);
+            }
+        }
+        return G;
     }
 
     public String toString() {
