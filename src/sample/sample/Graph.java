@@ -1,8 +1,10 @@
+package sample.sample;
+
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class Graph<Label> extends ParcourProfondeurIteree{
+public class Graph<Label>   {
 
     public class Edge {
         public int source;
@@ -24,6 +26,7 @@ public class Graph<Label> extends ParcourProfondeurIteree{
 
 
     public Graph(int size) {
+        super();
         cardinal = size;
         incidency = new ArrayList<LinkedList<Edge>>(size+1);
         for (int i = 0;i<cardinal;i++) {
@@ -39,13 +42,12 @@ public class Graph<Label> extends ParcourProfondeurIteree{
         incidency.get(source).addLast(new Edge(source,dest,label));
     }
 
-    public ArrayList<Edge> arcsortant(int sommets){
-        ArrayList<Edge> arcsortant = new ArrayList<>();
-        for (int i=0; i<= incidency.get(sommets).size()-1; i++){
-            arcsortant.add(incidency.get(sommets).get(i));
-        }
-        return arcsortant;
+    public LinkedList<Edge> arcsortant(int sommets){
+        LinkedList<Edge> arcsortants = new LinkedList<>();
+        arcsortants=incidency.get(sommets);
+        return arcsortants;
     }
+
 
     public Graph<String> Grev(Label label,Graph<String> G){
         for (int i=0; i<= G.incidency.size()-1; i++){
@@ -64,17 +66,20 @@ public class Graph<Label> extends ParcourProfondeurIteree{
         result = result.concat("Nombre sommets : " + cardinal + "\n");
         result = result.concat("Sommets : \n");
         for (int i = 0; i<cardinal;i++) {
-	    result = result.concat(i + " ");
-		}
+            result = result.concat(i + " ");
+        }
         result = result.concat("\nArcs : \n");
         for (int i = 0; i<cardinal;i++) {
             for (Edge e : incidency.get(i)) {
                 result = result.concat(e.source + " -> " + e.destination + ", étiquette : "
-				       + e.label.toString() + "\n");
+                        + e.label.toString() + "\n");
             }
         }
         return result;
-	
+
     }
+
+}
+
     
 }

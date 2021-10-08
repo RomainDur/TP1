@@ -1,3 +1,5 @@
+package sample.sample;
+
 import java.awt.*;
 import java.io.*;
 import java.util.*;
@@ -29,14 +31,14 @@ public class Parser {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    return var;
+        return var;
     }
 
-    public Graph<String> CreateImpGraph() {
+    public sample.sample.Graph<String> CreateImpGraph() {
         ArrayList<Integer> sommets = new ArrayList<Integer>();
         String Sx1;
         String Sx2;
-        Graph<String> G = new Graph<String>(this.NbrVar());
+        sample.sample.Graph<String> G = new sample.sample.Graph<String>(this.NbrVar());
         try {
             // Lit le fichier d'entrée
             File file = new File("formula0.txt");
@@ -69,7 +71,6 @@ public class Parser {
             e.printStackTrace();
         }
 
-    return G;
+        return G;
     }
 }
-

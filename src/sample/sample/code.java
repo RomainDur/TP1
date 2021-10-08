@@ -1,5 +1,6 @@
-public class code {
+package sample.sample;
 
+public class code {
 
 
     public static int Transform(float x, int var){
@@ -12,4 +13,3 @@ public class code {
         }
     }
 }
-
